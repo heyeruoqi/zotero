@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<style class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="zh-CN" xmlns="http://purl.org/net/xbiblio/csl">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>JM Chinese Std GB/T 7714-2005 (numeric, Chinese)</title>
+    <id>http://www.zotero.org/styles/jm-chinese-std-gb-t-7714-2005</id>
+    <link href="http://www.zotero.org/styles/jm-chinese-std-gb-t-7714-2005" rel="self"/>
+    <link href="http://gradschool.ustc.edu.cn/ylb/material/xw/wdxz/19.pdf" rel="documentation"/>
+    <author>
+      <name>heromyth</name>
+      <email>zxpmyth@yahoo.com.cn</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="engineering"/>
+    <category field="generic-base"/>
+    <category field="science"/>
+    <summary>This style just partly implemented what the Chinese GB/T 7714-2005 requires.</summary>
+    <updated>2022-03-22T06:25:06+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="edition">第%s版</term>
+    </terms>
+  </locale>
+  <locale xml:lang="zh">
+    <terms>
+      <term name="edition">第%s版</term>
+    </terms>
+  </locale>
+  <locale xml:lang="en">
+    <terms>
+      <term name="edition"> %s edn.</term>
+    </terms>
+  </locale>
+  <macro name="author_zh">
+    <names variable="author" suffix=".">
+      <name delimiter="，" delimiter-precedes-last="always" initialize-with=" " name-as-sort-order="all" sort-separator=" ">
+        <name-part name="family" text-case="uppercase"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="author_en">
+    <names variable="author">
+      <name delimiter="," delimiter-precedes-last="always" name-as-sort-order="all">
+        <name-part name="family" text-case="uppercase"/>
+      </name>
+    </names>
+    <names>
+      <name/>
+    </names>
+  </macro>
+  <macro name="trailing-contributor_zh">
+    <names variable="recipient">
+      <name delimiter="，" delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" text-case="lowercase" prefix="，"/>
+      <substitute>
+        <names variable="interviewer"/>
+        <names variable="composer"/>
+        <names variable="original-author"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title_zh">
+    <text variable="title"/>
+  </macro>
+  <macro name="titleField_zh">
+    <choose>
+      <if type="report">
+        <text macro="title_zh"/>
+      </if>
+      <else-if type="thesis">
+        <text macro="title_zh"/>
+      </else-if>
+      <else-if type="bill legislation" match="any">
+        <group delimiter="，">
+          <number variable="number"/>
+          <text macro="title_zh"/>
+        </group>
+      </else-if>
+      <else-if type="book graphic legal_case motion_picture song" match="any">
+        <text macro="title_zh"/>
+      </else-if>
+      <else-if type="paper-conference">
+        <text macro="title_zh"/>
+      </else-if>
+      <else-if type="chapter" match="any">
+        <text macro="title_zh"/>
+      </else-if>
+      <else-if type="webpage">
+        <text macro="title_zh"/>
+      </else-if>
+      <else-if type="patent">
+        <text macro="title_zh"/>
+        <number prefix="：" variable="number"/>
+      </else-if>
+      <else>
+        <text macro="title_zh"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="titleFieldSuffix_zh">
+    <choose>
+      <if type="report">
+        <text value="[R]."/>
+      </if>
+      <else-if type="thesis">
+        <text value="[D]."/>
+      </else-if>
+      <else-if type="bill legislation" match="any">
+        <text value="[A]."/>
+      </else-if>
+      <else-if type="book" match="any">
+        <text value="[M]."/>
+      </else-if>
+      <else-if type="paper-conference">
+        <text value="[C]."/>
+      </else-if>
+      <else-if type="chapter" match="any">
+        <text value="[M]//"/>
+      </else-if>
+      <else-if type="webpage">
+        <text value="[EB/OL]."/>
+      </else-if>
+      <else-if type="patent">
+        <text value="[P]."/>
+      </else-if>
+      <else-if type="article-newspaper" match="any">
+        <text value="[N]."/>
+      </else-if>
+      <else>
+        <text value="[J]."/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="secondaryAuthor_zh">
+    <names variable="editor">
+      <name delimiter="，" delimiter-precedes-last="always" initialize-with=" " name-as-sort-order="all" sort-separator=" ">
+        <name-part name="family" text-case="uppercase"/>
+      </name>
+    </names>
+    <names variable="translator">
+      <name delimiter="，" suffix="，译" delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+    </names>
+  </macro>
+  <macro name="publisherMain_zh">
+    <choose>
+      <if type="chapter" match="any">
+        <text variable="container-title" suffix="．"/>
+      </if>
+      <else-if type="report">
+        <group delimiter="， ">
+          <text variable="collection-title"/>
+        </group>
+      </else-if>
+      <else-if type="bill legislation" match="any">
+        <text variable="container-title" prefix="．"/>
+      </else-if>
+      <else-if type="paper-conference" match="any"/>
+      <else>
+        <text variable="container-title" suffix="，"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisherSupp_zh">
+    <group>
+      <group>
+        <choose>
+          <if type="article-newspaper" match="any">
+            <date variable="issued">
+              <date-part name="year"/>
+              <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+              <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+            </date>
+          </if>
+          <else>
+            <text variable="publisher-place" suffix="："/>
+            <group delimiter="，">
+              <text variable="publisher"/>
+              <choose>
+                <if type="webpage" variable="container-title" match="all"/>
+                <else-if type="webpage"/>
+                <else-if type="patent">
+                  <date variable="issued">
+                    <date-part name="year"/>
+                    <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+                    <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+                  </date>
+                </else-if>
+                <else-if type="bill legislation" match="any"/>
+                <else-if type="book thesis" match="any">
+                  <date date-parts="year" form="numeric" variable="issued"/>
+                </else-if>
+                <else-if type="article-journal article-magazine article" match="any">
+                  <group>
+                    <date date-parts="year" form="numeric" variable="issued"/>
+                  </group>
+                </else-if>
+                <else-if type="report" match="any">
+                  <date form="numeric" variable="issued"/>
+                </else-if>
+                <else>
+                  <date variable="issued">
+                    <date-part name="year"/>
+                  </date>
+                </else>
+              </choose>
+              <group>
+                <choose>
+                  <if type="article article-journal article-magazine" match="any">
+                    <number variable="volume"/>
+                    <number variable="issue" prefix="(" suffix=")"/>
+                  </if>
+                </choose>
+              </group>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </group>
+  </macro>
+  <macro name="pageField_zh">
+    <group/>
+    <number variable="page"/>
+  </macro>
+  <macro name="referenceDate_zh">
+    <choose>
+      <if type="webpage">
+        <date variable="accessed" prefix="(" suffix=")">
+          <date-part name="year"/>
+          <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+          <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+        </date>
+        <date variable="available-date" prefix="[" suffix="]">
+          <date-part name="year"/>
+          <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+          <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="DOI">
+        <text variable="DOI" prefix="doi:"/>
+      </if>
+      <else-if variable="URL">
+        <text variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="bib-entry-zh">
+    <group delimiter="">
+      <group>
+        <group delimiter="">
+          <group>
+            <text macro="author_zh"/>
+            <group>
+              <choose>
+                <if type="bill legislation paper-conference chapter">
+                  <group delimiter="">
+                    <text macro="titleField_zh" strip-periods="false" font-style="normal" font-variant="normal" font-weight="normal"/>
+                    <text macro="titleFieldSuffix_zh"/>
+                  </group>
+                </if>
+              </choose>
+              <group>
+                <choose>
+                  <if type="bill legislation paper-conference chapter"/>
+                  <else>
+                    <group delimiter="">
+                      <text macro="titleField_zh"/>
+                      <text macro="titleFieldSuffix_zh"/>
+                    </group>
+                  </else>
+                </choose>
+                <text macro="secondaryAuthor_zh" suffix="."/>
+                <group delimiter="">
+                  <label variable="edition"/>
+                  <number variable="edition"/>
+                </group>
+                <group delimiter="">
+                  <text macro="publisherMain_zh"/>
+                  <text macro="publisherSupp_zh"/>
+                </group>
+                <choose>
+                  <if type="bill legislation"/>
+                  <else-if type="paper-conference thesis patent document" match="any"/>
+                  <else-if type="book" match="any">
+                    <group prefix="：">
+                      <text variable="number-of-pages"/>
+                    </group>
+                  </else-if>
+                  <else-if type="report" match="any">
+                    <group prefix="：">
+                      <text variable="page"/>
+                    </group>
+                  </else-if>
+                  <else-if type="article-newspaper" match="any">
+                    <text macro="pageField_en" prefix="(" suffix=")"/>
+                  </else-if>
+                  <else>
+                    <text macro="pageField_zh" prefix="："/>
+                  </else>
+                </choose>
+              </group>
+              <choose>
+                <if type="bill legislation">
+                  <text macro="pageField_zh" prefix=": "/>
+                </if>
+              </choose>
+            </group>
+          </group>
+          <text macro="referenceDate_zh"/>
+        </group>
+        <choose>
+          <if type="webpage" match="any">
+            <text macro="access" prefix="."/>
+          </if>
+        </choose>
+      </group>
+      <text macro="trailing-contributor_zh"/>
+    </group>
+  </macro>
+  <macro name="bib-entry-en">
+    <group delimiter="">
+      <group>
+        <group>
+          <group>
+            <text macro="author_en" suffix="."/>
+            <group delimiter="">
+              <choose>
+                <if type="bill legislation paper-conference chapter">
+                  <group>
+                    <text macro="titleField_en"/>
+                    <text macro="titleFieldSuffix_en"/>
+                  </group>
+                </if>
+              </choose>
+              <group>
+                <choose>
+                  <if type="bill legislation paper-conference chapter"/>
+                  <else>
+                    <group>
+                      <text macro="titleField_en"/>
+                      <text macro="titleFieldSuffix_en"/>
+                    </group>
+                  </else>
+                </choose>
+                <text macro="secondaryAuthor_en" suffix="."/>
+                <number variable="edition"/>
+                <group>
+                  <text macro="publisherMain_en"/>
+                  <text macro="publisherSupp_en"/>
+                </group>
+                <choose>
+                  <if type="bill legislation"/>
+                  <else-if type="book" match="any">
+                    <group prefix=":">
+                      <text variable="number-of-pages"/>
+                    </group>
+                  </else-if>
+                  <else-if type="report" match="any">
+                    <group prefix=":">
+                      <text variable="number-of-pages"/>
+                    </group>
+                  </else-if>
+                  <else>
+                    <choose>
+                      <if type="article-newspaper" match="any">
+                        <text macro="pageField_en" prefix="(" suffix=")"/>
+                      </if>
+                      <else-if type="paper-conference" match="any"/>
+                      <else>
+                        <text macro="pageField_en" prefix=":"/>
+                      </else>
+                    </choose>
+                  </else>
+                </choose>
+              </group>
+              <choose>
+                <if type="bill legislation">
+                  <text macro="pageField_en" prefix=": "/>
+                </if>
+              </choose>
+            </group>
+          </group>
+          <text macro="referenceDate_en"/>
+        </group>
+        <choose>
+          <if type="webpage" match="any">
+            <text macro="access" prefix="."/>
+          </if>
+        </choose>
+      </group>
+      <text macro="trailing-contributor_en"/>
+    </group>
+  </macro>
+  <macro name="trailing-contributor_en">
+    <names variable="recipient">
+      <name delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=""/>
+      <label form="short" text-case="lowercase" prefix=","/>
+      <substitute>
+        <names variable="interviewer"/>
+        <names variable="composer"/>
+        <names variable="original-author"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title_en">
+    <text variable="title"/>
+  </macro>
+  <macro name="titleField_en">
+    <choose>
+      <if type="report" match="any">
+        <text macro="title_en"/>
+      </if>
+      <else-if type="thesis" match="any">
+        <text macro="title_en"/>
+      </else-if>
+      <else-if type="bill legislation" match="any">
+        <group delimiter=",">
+          <number variable="number"/>
+          <text macro="title_en"/>
+        </group>
+      </else-if>
+      <else-if type="book graphic legal_case motion_picture song" match="any">
+        <text macro="title_en"/>
+      </else-if>
+      <else-if type="paper-conference" match="any">
+        <text macro="title_en"/>
+      </else-if>
+      <else-if type="chapter" match="any">
+        <text macro="title_en"/>
+      </else-if>
+      <else-if type="webpage" match="any">
+        <text macro="title_en"/>
+      </else-if>
+      <else-if type="patent" match="any">
+        <text macro="title_en"/>
+        <number prefix=":" variable="number"/>
+      </else-if>
+      <else>
+        <text macro="title_en"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="titleFieldSuffix_en">
+    <choose>
+      <if type="report" match="any">
+        <text value="[R]."/>
+      </if>
+      <else-if type="thesis" match="any">
+        <text value="[D]."/>
+      </else-if>
+      <else-if type="bill legislation" match="any">
+        <text value="[A]."/>
+      </else-if>
+      <else-if type="book" match="any">
+        <text value="[M]."/>
+      </else-if>
+      <else-if type="paper-conference" match="any">
+        <text value="[C]."/>
+      </else-if>
+      <else-if type="chapter" match="any">
+        <text value="[M]//"/>
+      </else-if>
+      <else-if type="webpage" match="any">
+        <text value="[EB/OL]."/>
+      </else-if>
+      <else-if type="patent" match="any">
+        <text value="[P]."/>
+      </else-if>
+      <else-if type="article-newspaper" match="any">
+        <text value="[N]."/>
+      </else-if>
+      <else>
+        <text value="[J]." quotes="false"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="secondaryAuthor_en">
+    <names variable="editor">
+      <name delimiter="," delimiter-precedes-last="always" name-as-sort-order="all" sort-separator="">
+        <name-part name="family" text-case="uppercase"/>
+      </name>
+    </names>
+    <names variable="translator">
+      <name delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=""/>
+    </names>
+  </macro>
+  <macro name="publisherMain_en">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <text variable="container-title" suffix="."/>
+      </if>
+      <else-if type="report" match="any">
+        <group delimiter=",">
+          <text variable="collection-title"/>
+        </group>
+      </else-if>
+      <else-if type="bill legislation" match="any">
+        <text variable="container-title" prefix="."/>
+      </else-if>
+      <else>
+        <text variable="container-title" suffix=","/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisherSupp_en">
+    <group>
+      <group>
+        <choose>
+          <if type="article-newspaper" match="any">
+            <date variable="issued">
+              <date-part name="year"/>
+              <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+              <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+            </date>
+          </if>
+          <else>
+            <text variable="publisher-place" suffix=":"/>
+            <group delimiter=",">
+              <text variable="publisher"/>
+              <choose>
+                <if type="webpage" match="all" variable="container-title"/>
+                <else-if type="webpage" match="any"/>
+                <else-if type="patent" match="any">
+                  <date form="text" date-parts="year-month-day" variable="issued">
+                    <date-part name="year"/>
+                    <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+                    <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+                  </date>
+                </else-if>
+                <else-if type="bill legislation" match="any"/>
+                <else-if type="book" match="any">
+                  <date date-parts="year" form="numeric" variable="issued"/>
+                </else-if>
+                <else-if type="article article-journal article-magazine" match="any">
+                  <group suffix=",">
+                    <date date-parts="year" form="numeric" variable="issued"/>
+                  </group>
+                </else-if>
+                <else-if type="report" match="any">
+                  <date form="numeric" variable="issued"/>
+                </else-if>
+                <else>
+                  <date variable="issued">
+                    <date-part name="year"/>
+                  </date>
+                </else>
+              </choose>
+              <choose>
+                <if type="article article-journal article-magazine" match="any">
+                  <number variable="volume"/>
+                  <number prefix="(" suffix=")" variable="issue"/>
+                </if>
+              </choose>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </group>
+  </macro>
+  <macro name="pageField_en">
+    <group/>
+    <number variable="page"/>
+  </macro>
+  <macro name="referenceDate_en">
+    <choose>
+      <if type="webpage" match="any">
+        <date variable="accessed" prefix="(" suffix=")">
+          <date-part name="year"/>
+          <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+          <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+        </date>
+        <date form="text" date-parts="year-month-day" variable="issued">
+          <date-part name="year"/>
+          <date-part name="month" prefix="-"/>
+          <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout vertical-align="sup" prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="3" et-al-use-first="3" second-field-align="flush" entry-spacing="0">
+    <layout suffix="." locale="en">
+      <text variable="citation-number" prefix="[" suffix="]"/>
+      <text macro="bib-entry-en"/>
+    </layout>
+    <layout suffix=".">
+      <text variable="citation-number" prefix="[" suffix="]"/>
+      <text macro="bib-entry-zh"/>
+    </layout>
+  </bibliography>
+</style>
